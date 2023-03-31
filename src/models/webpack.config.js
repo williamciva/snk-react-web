@@ -1,23 +1,14 @@
 const prod = process.env.NODE_ENV === 'production';
-const args = require('minimist')(process.argv.slice(2),
-    {
-        alias: {
-            p: 'production',
-            d: 'development',
-            e: 'entry',
-            o: 'outpath',
-            t: 'template',
-        }
-    });
+const dashboard = process.env.DASHBOARD
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
-  entry: './src/index.tsx',
+  entry: `./src/dashboards/${dashboard}/${dashboard}.tsx`.replaceAll(" ", ""),
   output: {
-    path: __dirname + '/build/',
+    path: `${__dirname}/build/${dashboard}/`.replaceAll(" ", ""),
   },
   module: {
     rules: [
@@ -38,7 +29,7 @@ module.exports = {
   devtool: prod ? undefined : 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html',
+      template: `./src/dashboards/${dashboard}/${dashboard}.html`.replaceAll(" ", ""),
     }),
     new MiniCssExtractPlugin(),
   ],

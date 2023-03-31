@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/williamciva/snk-react-web#readme",
   "devDependencies": {
-    "@types/minimist": "^1.2.2",
     "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",
     "css-loader": "^6.7.3",
