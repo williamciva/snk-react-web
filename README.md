@@ -113,7 +113,7 @@ This library makes an intermediary between the code executed with React making b
 
 ## 💪🏻 Contributions
 
-[williamciva](https://github.com/williamciva)
+- [williamciva](https://github.com/williamciva)
 
 ## 📃 Licença
 
