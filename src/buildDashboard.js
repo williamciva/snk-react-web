@@ -1,6 +1,35 @@
 const execSync = require('child_process').exec;
+const fs = require('fs');
+var archiver = require('archiver');
 
-module.exports = (dashboard, basePathUrl, verbose) => {
+const convertHTMLtoJSP = (dashboard) => {
+    console.log('The option JSP is enable, converting the html to valid JSP Sankhya.')
+    const htmlFile = fs.readFileSync(`./build/${dashboard}/index.html`);
+    const tags = `<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" isELIgnored ="false"%><%@ page import="java.util.*" %><%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %><%@ taglib prefix="snk" uri="/WEB-INF/tld/sankhyaUtil.tld" %>`;
+    const newHtmlFile = tags + htmlFile
+    fs.writeFileSync(`./build/${dashboard}/index.jsp`, newHtmlFile);
+}
+
+const zipFolder = (nameFolder, nameFile) => {
+    console.log('The option ZIP is enable, creating a zip from dashboard')
+
+    var output = fs.createWriteStream(`./build/${nameFile}.zip`);
+    var archive = archiver('zip');
+
+    output.on('close', function () {
+        console.log(archive.pointer() + ' total bytes');
+    });
+
+    archive.on('error', function (err) {
+        throw err;
+    });
+
+    archive.pipe(output);
+
+    archive.directory(`./build/${nameFolder}`, false);
+}
+
+module.exports = (dashboard, basePathUrl, verbose, jsp, zip) => {
     try {
         var base;
         if (basePathUrl !== undefined) {
@@ -9,8 +38,13 @@ module.exports = (dashboard, basePathUrl, verbose) => {
             base = './'
         }
         console.clear();
-        execution = console.log(execSync(`set NODE_ENV=production && set DASHBOARD=${dashboard} && set PUBLIC_URL=${base} && webpack`, { encoding: 'utf-8' }));
+        execution = execSync(`set NODE_ENV=production && set DASHBOARD=${dashboard} && set PUBLIC_URL=${base} && webpack`, { encoding: 'utf-8' });
         verbose ? execution.stdout.pipe(process.stdout) : null;
+
+        execution.on('exit', (data) => {
+            jsp ? convertHTMLtoJSP(dashboard) : null;
+            zip !== undefined ? zip ? zipFolder(dashboard, dashboard) : zipFolder(zip) : null
+        })
     } catch (error) {
         console.log(error)
     }

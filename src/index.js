@@ -1,4 +1,3 @@
-const fs = require('fs');
 const addDashboard = require('./addDashboard');
 const buildDashboard = require('./buildDashboard');
 const createApp = require('./createApp');
@@ -13,12 +12,14 @@ const args = require('minimist')(process.argv.slice(2),
     const create = args.create;
     const add = args.add;
     const build = args.build;
-    const basePathUrl = args.p;
+    const basePathUrl = args.pu;
+    const jsp = args.jsp;
+    const zip = args.zip;
     const start = args.start;
     const port = args.port
     const verbose = args.verbose;
 
-    if (helper !== undefined) {
+    if (help !== undefined) {
         return helper();
     }
 
@@ -31,7 +32,7 @@ const args = require('minimist')(process.argv.slice(2),
     }
 
     if (build !== undefined) {
-        return buildDashboard(build, basePathUrl, verbose);
+        return buildDashboard(build, basePathUrl, verbose, jsp, zip);
     }
 
     if (start !== undefined) {

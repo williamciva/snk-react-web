@@ -1,7 +1,7 @@
 {
   "name": "snk-react-web",
-  "version": "0.1.0",
-  "description": "build react pages to components of bi",
+  "version": "1.0.0",
+  "description": "Make Sankhya dashboards with React Web tools and facilities.",
   "main": "./src/index.js",
   "bin": "bin/index.js",
   "scripts": {},
@@ -21,6 +21,8 @@
     "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.3",
     "webpack": "^5.77.0",
@@ -28,8 +30,11 @@
     "webpack-dev-server": "^4.13.1"
   },
   "dependencies": {
-    "minimist": "^1.2.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+    "archiver": "^5.3.1",
+    "minimist": "^1.2.8"
+  },
+  "files": [
+    "./src",
+    "./bin"
+  ]
 }

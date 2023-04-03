@@ -24,6 +24,9 @@ module.exports = (create) => {
             const webpackConfig = fs.readFileSync(path.join(__dirname, './models/webpack.config.js'));
             fs.writeFileSync('./webpack.config.js', webpackConfig.toString());
 
+            const helpFile = fs.readFileSync(path.join(__dirname, './models/help.js'));
+            fs.writeFileSync('./help.js', helpFile.toString());
+
             const tsconf =  fs.readFileSync(path.join(__dirname,  './models/tsconfig.json'));
             fs.writeFileSync('./tsconfig.json', tsconf.toString());
 

@@ -4,8 +4,10 @@
     "description": "build react pages to components of bi in ERP Sankhya",
     "main": "./src/index.tsx",
     "scripts": {
-      "start": "npx snk-react-web  --start --development webpack serve --port 3000 --stats-children",
-      "build": "set NODE_ENV=production && webpack"
+      "help": "node ./help.js",
+      "start:dev": "npx snk-react-web --verbose --start",
+      "build:sankhya": "npx snk-react-web --verbose --jsp --zip --public-url --build",
+      "add:dashboard": "npx snk-react-web --add"
     },
     "repository": {
       "type": "git",
@@ -31,7 +33,8 @@
     },
     "dependencies": {
       "react": "^18.2.0",
-      "react-dom": "^18.2.0"
+      "react-dom": "^18.2.0",
+      "snk-react-web":"*"
     }
   }
   
