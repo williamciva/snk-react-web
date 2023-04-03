@@ -43,7 +43,10 @@ module.exports = (dashboard, basePathUrl, verbose, jsp, zip) => {
 
         console.clear();
         execution = exec(`set NODE_ENV=production && set DASHBOARD=${name} && set PUBLIC_URL=${base} && webpack`, { encoding: 'utf-8' });
-        verbose ? execution.stdout.pipe(process.stdout) : null;
+        if (verbose) {
+            execution.stdout.pipe(process.stdout);
+            execution.stderr.pipe(process.stderr);
+        }
 
         execution.on('exit', (data) => {
             jsp ? convertHTMLtoJSP(name) : null;
