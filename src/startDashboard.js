@@ -19,7 +19,10 @@ module.exports = (dashboard, port, verbose) => {
         console.clear();
         console.log(`Running Dashboard ${name} on port ${runPort}`);
         execution = exec(`set DASHBOARD=${name} && webpack serve --port ${runPort} --stats-children --color`, { encoding: 'utf-8' });
-        verbose ? execution.stdout.pipe(process.stdout) : null;
+        if (verbose) {
+            execution.stdout.pipe(process.stdout); 
+            execution.stderr.pipe(process.stderr);
+        }
     } catch (error) {
         console.log(error)
     }
