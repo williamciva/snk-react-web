@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const verifyName = require('./utils/verifyName')
 
 const createPath = (name) => {
     try {
@@ -13,10 +14,6 @@ const createPath = (name) => {
     }
 }
 
-const verifyName = (str) => {
-    specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-    return specialChars.test(str);
-}
 
 const createFiles = (name) => {
     try {
@@ -38,13 +35,10 @@ const createFiles = (name) => {
 
 module.exports = (add) => {
     try {
-        if (!verifyName(add)) {
-            const name = add.charAt(0).toUpperCase() + add.slice(1);
-            createPath(name);
-            createFiles(name);
-        } else {
-            throw new Error(`Could not create dashboard ${add} because the string has special characters.`)
-        }
+        verifyName(add);
+        const name = add.charAt(0).toUpperCase() + add.slice(1);
+        createPath(name);
+        createFiles(name);
     } catch (error) {
         console.log(error);
     }

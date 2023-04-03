@@ -1,6 +1,7 @@
-const execSync = require('child_process').exec;
+const exec = require('child_process').exec;
 const fs = require('fs');
 var archiver = require('archiver');
+const verifyName = require('./utils/verifyName')
 
 const convertHTMLtoJSP = (dashboard) => {
     console.log('The option JSP is enable, converting the html to valid JSP Sankhya.')
@@ -37,13 +38,16 @@ module.exports = (dashboard, basePathUrl, verbose, jsp, zip) => {
         } else {
             base = './'
         }
+        verifyName(dashboard);
+        const name = dashboard.charAt(0).toUpperCase() + dashboard.slice(1);
+
         console.clear();
-        execution = execSync(`set NODE_ENV=production && set DASHBOARD=${dashboard} && set PUBLIC_URL=${base} && webpack`, { encoding: 'utf-8' });
+        execution = exec(`set NODE_ENV=production && set DASHBOARD=${name} && set PUBLIC_URL=${base} && webpack`, { encoding: 'utf-8' });
         verbose ? execution.stdout.pipe(process.stdout) : null;
 
         execution.on('exit', (data) => {
-            jsp ? convertHTMLtoJSP(dashboard) : null;
-            zip !== undefined ? zip ? zipFolder(dashboard, dashboard) : zipFolder(zip) : null
+            jsp ? convertHTMLtoJSP(name) : null;
+            zip !== undefined ? zip ? zipFolder(name, name) : zipFolder(zip) : null
         })
     } catch (error) {
         console.log(error)

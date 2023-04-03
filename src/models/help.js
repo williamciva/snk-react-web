@@ -9,9 +9,9 @@ const spaceBlank = (number) => {
 const scripts = {
     scripts: {
         "help" : "Display help for commands and options.",
-        "start:dev  <nameOfDashboard>": "Start a dev server to dahboard.",
-        "build:sankhya  <nameOfDashboard>": "Build a production folder to dashboard.",
-        "add:dashboard  <nameOfDashboard>": "Add a new folder for development dashboard."
+        "start:dev  nameOfDashboard": "Start a dev server to dahboard.",
+        "build:sankhya  nameOfDashboard": "Build a production folder to dashboard.",
+        "add:dashboard  nameOfDashboard": "Add a new folder for development dashboard."
     }
 }
 
