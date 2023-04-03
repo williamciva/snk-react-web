@@ -4,7 +4,8 @@ This tool aims to create a React Web environment with build and development supp
 
 ***This application is not linked to the company Sankhya Gestão de Negócios.***
 
-### 🐱‍👤 **Github:** [https://github.com/williamciva/snk-react-web](https://github.com/williamciva/snk-react-web)
+# 🐱‍👤 **Github:** [https://github.com/williamciva/snk-react-web](https://github.com/williamciva/snk-react-web)
+
 
 
 ## 🤯 Introduction
@@ -95,6 +96,8 @@ This library makes an intermediary between the code executed with React making b
 
 ### Production
 
+- [archiver](https://react.dev) - Make a zip folder.
+- [minimist](https://react.dev) - Optimist's argument.
 - [react](https://react.dev) - The library for web and native user interfaces.
 - [react-dom](https://react.dev) - Manipulation of dom used for React aplication.
 
