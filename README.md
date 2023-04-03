@@ -4,7 +4,7 @@ This tool aims to create a React Web environment with build and development supp
 
 ***This application is not linked to the company Sankhya Gestão de Negócios.***
 
-# 🐱‍👤 **Github:** [https://github.com/williamciva/snk-react-web](https://github.com/williamciva/snk-react-web)
+### 🐱‍👤 **Github:** [https://github.com/williamciva/snk-react-web](https://github.com/williamciva/snk-react-web)
 
 
 
@@ -98,8 +98,6 @@ This library makes an intermediary between the code executed with React making b
 
 - [archiver](https://react.dev) - Make a zip folder.
 - [minimist](https://react.dev) - Optimist's argument.
-- [react](https://react.dev) - The library for web and native user interfaces.
-- [react-dom](https://react.dev) - Manipulation of dom used for React aplication.
 
 ### Development
 
@@ -108,6 +106,8 @@ This library makes an intermediary between the code executed with React making b
 - [css-loader](https://webpack.js.org/loaders/css-loader/) - Upload CSS files to webpack.
 - [html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/) - Upload HTML files to webpack.
 - [mini-css-extract-plugin](https://www.npmjs.com/package/mini-css-extract-plugin) - This plugin extracts CSS into separate files. It creates a CSS file per JS file which contains CSS.
+- [react](https://react.dev) - The library for web and native user interfaces.
+- [react-dom](https://react.dev) - Manipulation of dom used for React aplication.
 - [ts-loader](https://www.npmjs.com/package/ts-loader) - TypeScript loader for webpack.
 - [typescript](https://www.typescriptlang.org) - TS development..
 - [webpack](https://webpack.js.org) - Module wrapper.
