@@ -1,6 +1,6 @@
 {
   "name": "snk-react-web",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Make Sankhya dashboards with React Web tools and facilities.",
   "main": "./src/index.js",
   "bin": "bin/index.js",
@@ -10,7 +10,7 @@
     "url": "git+https://github.com/williamciva/snk-react-web.git"
   },
   "author": "williamciva",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/williamciva/snk-react-web/issues"
   },
@@ -36,5 +36,11 @@
   "files": [
     "./src",
     "./bin"
+  ],
+  "keywords": [
+    "sankhya",
+    "ERP",
+    "React",
+    "dashboards"
   ]
 }
