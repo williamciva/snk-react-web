@@ -42,7 +42,7 @@ module.exports = (dashboard, basePathUrl, verbose, jsp, zip) => {
         const name = dashboard.charAt(0).toUpperCase() + dashboard.slice(1);
 
         console.clear();
-        execution = exec(`set NODE_ENV=production && set DASHBOARD=${name} && set PUBLIC_URL=${base} && webpack`, { encoding: 'utf-8' });
+        execution = exec(`set DASHBOARD=${name} && set PUBLIC_URL=${base} && webpack --mode development`, { encoding: 'utf-8' });
         if (verbose) {
             execution.stdout.pipe(process.stdout);
             execution.stderr.pipe(process.stderr);

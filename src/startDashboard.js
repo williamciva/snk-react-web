@@ -18,7 +18,7 @@ module.exports = (dashboard, port, verbose) => {
 
         console.clear();
         console.log(`Running Dashboard ${name} on port ${runPort}`);
-        execution = exec(`set DASHBOARD=${name} && webpack serve --port ${runPort} --stats-children --color`, { encoding: 'utf-8' });
+        execution = exec(`set DASHBOARD=${name} && webpack serve --mode development --port ${runPort} --stats-children --color`, { encoding: 'utf-8' });
         if (verbose) {
             execution.stdout.pipe(process.stdout); 
             execution.stderr.pipe(process.stderr);
