@@ -1,13 +1,16 @@
+var prod;
 var dashboard; process.env.DASHBOARD;
 var baseUrl;
 
-try { dashboard = process.env.DASHBOARD.replace(' ', '');; } catch (error) { dashboard = undefined }
+try { prod = process.env.NODE_ENV.replace(' ', '') === 'production'; } catch (error) { prod = false }
+try { dashboard = process.env.DASHBOARD.replace(' ', ''); } catch (error) { dashboard = undefined }
 try { baseUrl = process.env.PUBLIC_URL.replace(' ', ''); } catch (error) { baseUrl = './' }
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  mode: prod ? 'production' : 'development',
   entry: `./src/dashboards/${dashboard}/${dashboard}.tsx`,
   output: {
     path: `${__dirname}/build/${dashboard}/`,
@@ -36,4 +39,15 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
   ],
+  devServer: {
+    client: {
+      progress: true,
+    },
+    open: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
+  },
 };
